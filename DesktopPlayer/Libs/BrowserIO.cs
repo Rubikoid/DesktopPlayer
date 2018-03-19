@@ -94,11 +94,10 @@ namespace DesktopPlayer {
                     this.work = false;
                     break;
                 }
-
-                string input = "";
-                for(int i = 0; i < length; i++) {
-                    input += (char)stdin.ReadByte();
-                }
+                byte[] buffer = new byte[length];
+                stdin.Read(buffer, 0, length);
+                string input = Encoding.UTF8.GetString(buffer);
+                
                 dynamic recivedObject = JsonConvert.DeserializeObject(input);
                 this.onMessageReciving(recivedObject, input);
             }

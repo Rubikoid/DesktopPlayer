@@ -13,7 +13,8 @@ using Newtonsoft.Json;
 
 namespace DesktopPlayer {
     public partial class Form1 : Form {
-        public BrowserIO bio;
+        BrowserIO bio;
+        public Worker worker;
         public Form1() {
             InitializeComponent();
             Helper.RichTextBoxStore.rtb = this.richTextBox1;
@@ -21,6 +22,7 @@ namespace DesktopPlayer {
             this.bio.onMessageReciving += (obj, msg) => {
                 Helper.RichTextBoxStore.WriteLine(msg);
             };
+            this.worker = new Worker(this, this.bio);
         }
 
         private void Form1_Load(object sender, EventArgs e) {
