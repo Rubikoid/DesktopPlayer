@@ -24,7 +24,7 @@ namespace DesktopPlayer {
             }
             set {
                 this._work = value;
-                this.form.checkBox1.Invoke((MethodInvoker)delegate () { this.form.checkBox1.Checked = value; });
+                //this.form.checkBox1.Invoke((MethodInvoker)delegate () { this.form.checkBox1.Checked = value; });
                 if(this._work) {
                     this.StartReciverThread();
                     this.StartSenderThread();
